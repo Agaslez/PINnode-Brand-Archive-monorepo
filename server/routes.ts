@@ -1,21 +1,18 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertBrandProjectSchema, insertArchivedEntrySchema } from "@shared/schema";
-import { AdvancedAssistantHandler } from "./assistant-handler";
-import { createBrandingZip, createArchiveZip } from "./export-zip";
 import { AIStyleDetector } from "./ai-style-detector";
-import salesRouter from "./sales-system";
+import { AdvancedAssistantHandler } from "./assistant-handler";
+import { loginUser, registerUser } from "./auth";
 import { generateCompleteProductZip } from "./complete-product-export";
-import { db, testDatabaseConnection } from "./database";
+import { testDatabaseConnection } from "./database";
+import { createArchiveZip, createBrandingZip } from "./export-zip";
 import { logger } from "./logger";
 import { errorMonitor } from "./monitor";
-import { authMiddleware, registerUser, loginUser, AuthRequest } from "./auth";
-import { validateRequest, validateData } from "./validation";
-import { authRegisterSchema, authLoginSchema } from "@shared/schema";
-import { authLimiter, apiLimiter, logoGenerationLimiter } from "./rate-limiter";
-import { globalErrorHandler, notFoundHandler, AppError } from "./error-handler";
-import { withRetry } from "./retry";
+import { authLimiter } from "./rate-limiter";
+import salesRouter from "./sales-system";
+import { authLoginSchema, authRegisterSchema, insertArchivedEntrySchema, insertBrandProjectSchema } from "./schema";
+import { storage } from "./storage";
+import { validateData } from "./validation";
 
 // Helper functions for complete workflow
 function extractBrandNameFromPrompt(prompt: string): string {

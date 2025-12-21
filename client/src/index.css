@@ -5,65 +5,18 @@
 :root {
   --background: hsl(220, 20%, 97%);
   --foreground: hsl(220, 15%, 20%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(220, 15%, 20%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(220, 15%, 20%);
-  --primary: hsl(210, 100%, 56%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(215, 25%, 95%);
-  --secondary-foreground: hsl(220, 15%, 25%);
-  --muted: hsl(215, 25%, 95%);
-  --muted-foreground: hsl(220, 15%, 55%);
-  --accent: hsl(215, 25%, 95%);
-  --accent-foreground: hsl(220, 15%, 25%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(215, 20%, 88%);
-  --input: hsl(215, 20%, 94%);
-  --ring: hsl(210, 100%, 56%);
-  --success: hsl(142, 76%, 36%);
-  --success-foreground: hsl(0, 0%, 100%);
-  --warning: hsl(38, 92%, 50%);
-  --warning-foreground: hsl(0, 0%, 100%);
   --radius: 0.75rem;
 }
 
 .dark {
   --background: hsl(220, 20%, 10%);
   --foreground: hsl(210, 40%, 98%);
-  --card: hsl(220, 15%, 12%);
-  --card-foreground: hsl(210, 40%, 98%);
-  --popover: hsl(220, 15%, 12%);
-  --popover-foreground: hsl(210, 40%, 98%);
-  --primary: hsl(210, 100%, 60%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(220, 15%, 16%);
-  --secondary-foreground: hsl(210, 40%, 92%);
-  --muted: hsl(220, 15%, 16%);
-  --muted-foreground: hsl(220, 15%, 65%);
-  --accent: hsl(220, 15%, 16%);
-  --accent-foreground: hsl(210, 40%, 92%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(220, 15%, 18%);
-  --input: hsl(220, 15%, 16%);
-  --ring: hsl(210, 100%, 60%);
-  --success: hsl(142, 76%, 36%);
-  --success-foreground: hsl(0, 0%, 100%);
-  --warning: hsl(38, 92%, 50%);
-  --warning-foreground: hsl(0, 0%, 100%);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: sans-serif;
 }
 
 @layer utilities {

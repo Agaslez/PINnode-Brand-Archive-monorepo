@@ -9,7 +9,6 @@ import { globalErrorHandler, notFoundHandler } from "./error-handler";
 import { logger } from "./logger";
 import { attachRequestLogging } from "./logging-middleware";
 import { registerRoutes } from "./routes";
-import { log, serveStatic } from "./vite";
 
 // Load environment variables
 dotenv.config();
@@ -71,7 +70,7 @@ app.use((req, res, next) => {
         logLine = logLine.slice(0, 79) + "…";
       }
 
-      log(logLine);
+      logger.info(logLine);
       logger.info(`${req.method} ${path}`, { status: res.statusCode, duration });
     }
   });
@@ -88,17 +87,11 @@ app.use((req, res, next) => {
   // Setup Vite in development mode if available
   const isDev = process.env.NODE_ENV === 'development';
   if (isDev) {
-    try {
-      await setupVite(app, httpServer);
-      log('Vite dev server middleware enabled');
-    } catch (error) {
-      // If Vite middleware fails, fallback to static files
-      log('Vite middleware setup failed, falling back to static files');
-      serveStatic(app);
-    }
+    logger.info('Development mode - serving static files from dist/public');
+    app.use(express.static('dist/public'));
   } else {
     // Production: use static files
-    serveStatic(app);
+    app.use(express.static('dist/public'));
   }
 
   // Error handling middleware with logging
@@ -118,7 +111,7 @@ app.use((req, res, next) => {
   // Start server
   const port = parseInt(process.env.PORT || '5000', 10);
   httpServer.listen(port, '0.0.0.0', () => {
-    log(`serving on port ${port}`);
+    logger.info(`serving on port ${port}`);
     logger.info(`PINnode System started on port ${port}`, { environment: process.env.NODE_ENV });
   });
 })();

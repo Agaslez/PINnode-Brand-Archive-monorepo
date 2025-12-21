@@ -1,4 +1,4 @@
-import { type BrandProject, type InsertBrandProject, type ArchivedEntry, type InsertArchivedEntry } from "@shared/schema";
+import { type ArchivedEntry, type BrandProject, type InsertArchivedEntry, type InsertBrandProject } from "./schema";
 
 // Storage interface for brand projects and archived entries
 export interface IStorage {

@@ -1,14 +1,13 @@
-import JSZip from "jszip";
 import { Request, Response } from "express";
-import { generateAdvancedSVGLogo, generateSmartColorPalette, generateAILogoPrompt, generateAIColorPalettePrompt, generatePremiumLogo } from "./ai-logo-generator";
-import { generateDemoVideoStoryboard, generateDemoVideoInfo, generateAnimatedLogo } from "./demo-generator";
-import { generateCDNConfiguration, generateCDNAssetUrls, generateCDNUsageInstructions, generateVercelCDNConfig, generateCloudflareConfig } from "./cdn-integration";
-import { addVideoAssetsToZip, generateVideoPlaceholder } from "./video-generator";
-import { generatePublicAssetsFolder } from "./public-assets-generator";
-import { enhanceBrandWithDeepSeek, AIEnhancedBrandData } from "./deepseek-integration";
-import { logger } from "./logger";
+import JSZip from "jszip";
+import { generateAIColorPalettePrompt, generateAILogoPrompt, generatePremiumLogo, generateSmartColorPalette } from "./ai-logo-generator";
+import { generateCDNAssetUrls, generateCDNConfiguration, generateCDNUsageInstructions, generateCloudflareConfig, generateVercelCDNConfig } from "./cdn-integration";
 import { db } from "./database";
-import { generations } from "@shared/schema";
+import { generateAnimatedLogo, generateDemoVideoInfo, generateDemoVideoStoryboard } from "./demo-generator";
+import { logger } from "./logger";
+import { generatePublicAssetsFolder } from "./public-assets-generator";
+import { generations } from "./schema";
+import { addVideoAssetsToZip, generateVideoPlaceholder } from "./video-generator";
 
 export interface CompleteProductData {
   brandName: string;
