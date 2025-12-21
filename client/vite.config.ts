@@ -4,7 +4,13 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   build: {
-    outDir: path.resolve(__dirname, '../dist/public'),
+    outDir: 'dist',
+    emptyOutDir: true,
   },
 });
