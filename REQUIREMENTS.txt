@@ -1,0 +1,32 @@
+# PINnode System v1.0.0 - Node.js Requirements
+# 
+# This is a Node.js project, use package.json instead of requirements.txt
+# For Python projects: use pip install -r requirements.txt
+# For Node.js projects: use npm install (or yarn install)
+#
+# Installation:
+#   npm install
+#
+# The package.json contains all dependencies and versions.
+# See package.json for complete list.
+
+# Key Dependencies:
+# - Express 4.21.2 (Web framework)
+# - React 18.3.1 (Frontend)
+# - TypeScript (Type safety)
+# - Drizzle ORM (Database)
+# - Zod (Validation)
+# - TanStack Query (Data fetching)
+# - Radix UI (Components)
+# - Tailwind CSS (Styling)
+# - Sharp (Image processing)
+# - OpenAI / DeepSeek APIs
+
+# For pip equivalent on Node.js:
+# Use: npm install
+# Check versions: npm list --depth=0
+# Update all: npm update
+# Add new package: npm install <package-name>
+# Remove package: npm uninstall <package-name>
+
+# See package.json for exact versions of all 80+ packages

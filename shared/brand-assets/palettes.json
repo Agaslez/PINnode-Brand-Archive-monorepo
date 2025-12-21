@@ -1,0 +1,17 @@
+{
+  "futuristic": ["#0f0f0f", "#8e44ad", "#1abc9c", "#e74c3c", "#f39c12"],
+  "healthcare": ["#3498db", "#ecf0f1", "#2ecc71", "#ffffff", "#34495e"],
+  "fintech": ["#2c3e50", "#f1c40f", "#34495e", "#95a5a6", "#ffffff"],
+  "tech": ["#667eea", "#764ba2", "#f093fb", "#f5576c", "#4facfe"],
+  "wellness": ["#56ab2f", "#a8edea", "#fed6e3", "#ffecd2", "#fcb69f"],
+  "creative": ["#ff9a9e", "#fecfef", "#fecfef", "#a8edea", "#fed6e3"],
+  "corporate": ["#2c3e50", "#3498db", "#ecf0f1", "#bdc3c7", "#34495e"],
+  "luxury": ["#000000", "#c9b037", "#ffffff", "#8b7355", "#2c2c2c"],
+  "playful": ["#ff6b6b", "#4ecdc4", "#45b7d1", "#96ceb4", "#ffeaa7"],
+  "minimal": ["#ffffff", "#000000", "#f8f9fa", "#6c757d", "#343a40"],
+  "nature": ["#27ae60", "#2ecc71", "#f39c12", "#e67e22", "#8b4513"],
+  "energy": ["#e74c3c", "#f39c12", "#f1c40f", "#e67e22", "#d35400"],
+  "ocean": ["#3498db", "#2980b9", "#1abc9c", "#16a085", "#ecf0f1"],
+  "sunset": ["#f39c12", "#e67e22", "#e74c3c", "#c0392b", "#8e44ad"],
+  "modern": ["#667eea", "#764ba2", "#667eea", "#f093fb", "#f5576c"]
+}

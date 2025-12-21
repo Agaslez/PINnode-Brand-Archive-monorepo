@@ -1,0 +1,17 @@
+{
+  "tech": ["Inter", "Roboto", "Space Grotesk", "JetBrains Mono", "Fira Code"],
+  "wellness": ["Lora", "Open Sans", "Raleway", "Nunito Sans", "Source Sans Pro"],
+  "finance": ["DM Sans", "Nunito", "IBM Plex Sans", "Roboto", "Lato"],
+  "creative": ["Poppins", "Montserrat", "Playfair Display", "Dancing Script", "Pacifico"],
+  "corporate": ["Roboto", "Open Sans", "Lato", "Source Sans Pro", "PT Sans"],
+  "luxury": ["Playfair Display", "Cormorant Garamond", "Crimson Text", "EB Garamond", "Libre Baskerville"],
+  "healthcare": ["Source Sans Pro", "Open Sans", "Lato", "Nunito Sans", "Roboto"],
+  "education": ["Open Sans", "Roboto", "Lato", "PT Sans", "Source Sans Pro"],
+  "retail": ["Montserrat", "Poppins", "Open Sans", "Lato", "Roboto"],
+  "restaurant": ["Playfair Display", "Montserrat", "Open Sans", "Dancing Script", "Pacifico"],
+  "sports": ["Oswald", "Roboto Condensed", "Open Sans", "Montserrat", "Fjalla One"],
+  "fashion": ["Playfair Display", "Montserrat", "Poppins", "Dancing Script", "Great Vibes"],
+  "automotive": ["Roboto", "Open Sans", "Oswald", "Montserrat", "PT Sans"],
+  "real_estate": ["Montserrat", "Open Sans", "Playfair Display", "Lato", "Roboto"],
+  "consulting": ["Open Sans", "Lato", "Roboto", "Source Sans Pro", "PT Sans"]
+}

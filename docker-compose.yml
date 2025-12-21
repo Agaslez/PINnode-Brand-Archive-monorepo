@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # Backend Express API Service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DATABASE_URL=${DATABASE_URL:-postgresql://user:password@db:5432/pinnode}
+    depends_on:
+      - db
+    volumes:
+      - ./shared:/app/shared
+    networks:
+      - pinnode-network
+
+  # Admin-UI React + Vite Frontend
+  admin-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:5000
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    networks:
+      - pinnode-network
+
+  # Shiny + RMarkdown Style Generator
+  shiny-stylegen:
+    build:
+      context: .
+      dockerfile: Dockerfile.shiny
+    ports:
+      - "3838:3838"
+    environment:
+      - SHINY_LOG_LEVEL=INFO
+    volumes:
+      - ./shared/brand-assets:/srv/shiny-server/assets
+      - ./server/shiny-style-generator.R:/srv/shiny-server/app.R
+    networks:
+      - pinnode-network
+
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=pinnode
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - pinnode-network
+
+  # Redis for Sessions and Caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - pinnode-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  pinnode-network:
+    driver: bridge

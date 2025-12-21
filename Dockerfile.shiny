@@ -1,0 +1,36 @@
+# Shiny + RMarkdown Style Generator Dockerfile
+FROM rocker/shiny:latest
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    libpng-dev \
+    libjpeg-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install R packages
+RUN R -e "install.packages(c('shiny', 'rmarkdown', 'knitr', 'jsonlite', 'DT', 'plotly', 'htmlwidgets', 'shinydashboard', 'colourpicker'), repos='https://cran.r-project.org')"
+
+# Create app directory
+RUN mkdir -p /srv/shiny-server/assets
+
+# Copy Shiny application
+COPY server/shiny-style-generator.R /srv/shiny-server/app.R
+
+# Copy assets
+COPY shared/brand-assets /srv/shiny-server/assets
+
+# Set permissions
+RUN chown -R shiny:shiny /srv/shiny-server
+
+# Expose port
+EXPOSE 3838
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:3838 || exit 1
+
+# Start Shiny Server
+CMD ["/usr/bin/shiny-server"]

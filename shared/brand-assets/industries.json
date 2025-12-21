@@ -1,0 +1,72 @@
+{
+  "technology": {
+    "tone": "innovative, modern, efficient",
+    "style": "clean, geometric, futuristic",
+    "keywords": ["innovation", "digital", "smart", "future", "tech"],
+    "palette": "tech",
+    "fonts": "tech"
+  },
+  "healthcare": {
+    "tone": "trustworthy, caring, professional",
+    "style": "clean, calming, accessible",
+    "keywords": ["health", "care", "trust", "wellness", "life"],
+    "palette": "healthcare",
+    "fonts": "healthcare"
+  },
+  "finance": {
+    "tone": "professional, secure, reliable",
+    "style": "corporate, stable, premium",
+    "keywords": ["secure", "trust", "growth", "investment", "wealth"],
+    "palette": "fintech",
+    "fonts": "finance"
+  },
+  "creative": {
+    "tone": "artistic, expressive, unique",
+    "style": "colorful, dynamic, artistic",
+    "keywords": ["creative", "art", "design", "unique", "imagination"],
+    "palette": "creative",
+    "fonts": "creative"
+  },
+  "wellness": {
+    "tone": "natural, peaceful, holistic",
+    "style": "organic, calming, earth-toned",
+    "keywords": ["natural", "peace", "balance", "harmony", "wellness"],
+    "palette": "wellness",
+    "fonts": "wellness"
+  },
+  "luxury": {
+    "tone": "exclusive, premium, sophisticated",
+    "style": "elegant, minimal, high-end",
+    "keywords": ["luxury", "premium", "exclusive", "elegant", "sophisticated"],
+    "palette": "luxury",
+    "fonts": "luxury"
+  },
+  "education": {
+    "tone": "knowledgeable, approachable, inspiring",
+    "style": "friendly, clear, academic",
+    "keywords": ["learn", "knowledge", "growth", "education", "future"],
+    "palette": "corporate",
+    "fonts": "education"
+  },
+  "retail": {
+    "tone": "friendly, accessible, trendy",
+    "style": "modern, appealing, commercial",
+    "keywords": ["shop", "style", "quality", "value", "choice"],
+    "palette": "playful",
+    "fonts": "retail"
+  },
+  "restaurant": {
+    "tone": "warm, inviting, delicious",
+    "style": "appetizing, cozy, welcoming",
+    "keywords": ["taste", "fresh", "quality", "experience", "flavor"],
+    "palette": "nature",
+    "fonts": "restaurant"
+  },
+  "sports": {
+    "tone": "energetic, competitive, strong",
+    "style": "dynamic, bold, athletic",
+    "keywords": ["energy", "strength", "performance", "team", "victory"],
+    "palette": "energy",
+    "fonts": "sports"
+  }
+}
