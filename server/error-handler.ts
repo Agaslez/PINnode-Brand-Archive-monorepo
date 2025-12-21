@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { logger } from './logger';
+import { ApiResponseBuilder } from './types/api-response';
 
 export class AppError extends Error {
   constructor(
     public statusCode: number,
     message: string,
+    public code: string = 'APP_ERROR',
     public details?: any
   ) {
     super(message);
@@ -12,20 +14,20 @@ export class AppError extends Error {
   }
 }
 
-// Global error handler middleware
+// Global error handler middleware - STANDARD FORMAT
 export function globalErrorHandler(
   err: Error | AppError,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const timestamp = new Date().toISOString();
   const path = req.path;
   const method = req.method;
 
   // Handle AppError (custom application errors)
   if (err instanceof AppError) {
     logger.error('Application error', {
+      code: err.code,
       statusCode: err.statusCode,
       message: err.message,
       path,
@@ -33,12 +35,9 @@ export function globalErrorHandler(
       details: err.details
     });
 
-    return res.status(err.statusCode).json({
-      error: err.message,
-      statusCode: err.statusCode,
-      ...(err.details && { details: err.details }),
-      timestamp
-    });
+    return res.status(err.statusCode).json(
+      ApiResponseBuilder.error(err.code, err.message, err.statusCode)
+    );
   }
 
   // Handle validation errors
@@ -49,11 +48,9 @@ export function globalErrorHandler(
       method
     });
 
-    return res.status(400).json({
-      error: 'Validation failed',
-      message: err.message,
-      timestamp
-    });
+    return res.status(400).json(
+      ApiResponseBuilder.error('VALIDATION_ERROR', 'Validation failed', 400)
+    );
   }
 
   // Handle syntax errors (e.g., JSON parsing)
@@ -64,11 +61,9 @@ export function globalErrorHandler(
       method
     });
 
-    return res.status(400).json({
-      error: 'Invalid request format',
-      message: err.message,
-      timestamp
-    });
+    return res.status(400).json(
+      ApiResponseBuilder.error('INVALID_REQUEST', 'Invalid request format', 400)
+    );
   }
 
   // Handle generic errors
@@ -80,15 +75,15 @@ export function globalErrorHandler(
     method
   });
 
-  // Don't expose internal error details in production
   const isDevelopment = process.env.NODE_ENV === 'development';
   
-  res.status(500).json({
-    error: 'Internal server error',
-    ...(isDevelopment && { message: err.message }),
-    ...(isDevelopment && { stack: err.stack }),
-    timestamp
-  });
+  res.status(500).json(
+    ApiResponseBuilder.error(
+      'INTERNAL_SERVER_ERROR',
+      isDevelopment ? err.message : 'Internal server error',
+      500
+    )
+  );
 }
 
 // 404 handler middleware
@@ -98,10 +93,7 @@ export function notFoundHandler(req: Request, res: Response) {
     method: req.method
   });
 
-  res.status(404).json({
-    error: 'Not found',
-    path: req.path,
-    method: req.method,
-    timestamp: new Date().toISOString()
-  });
+  res.status(404).json(
+    ApiResponseBuilder.error('NOT_FOUND', 'Endpoint not found', 404)
+  );
 }
