@@ -28,13 +28,13 @@ jobs:
           cache: 'pnpm'
       
       - name: Install dependencies (root)
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       
       - name: Run ESLint
-        run: pnpm lint --filter='*'
+        run: npm run lint
       
       - name: Check Prettier formatting
-        run: pnpm format:check --filter='*'
+        run: npm run format:check
 
   typecheck:
     name: TypeScript Type Check
@@ -53,10 +53,10 @@ jobs:
           cache: 'pnpm'
       
       - name: Install dependencies (root)
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       
       - name: Run TypeScript check
-        run: pnpm check --filter='*'
+        run: npm run check
 
   test:
     name: Tests + Smoke (/health)
@@ -85,14 +85,14 @@ jobs:
           cache: 'pnpm'
       
       - name: Install dependencies (root)
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       
       - name: Run unit tests
-        run: pnpm test --filter='*'
+        run: npm run test
         timeout-minutes: 8
       
       - name: Build server (for smoke test)
-        run: pnpm build:server
+        run: npm run build:server
       
       # Smoke: CI start (bez watchera)
       - name: Start server (background)
@@ -152,7 +152,7 @@ jobs:
           cache: 'pnpm'
       
       - name: Install dependencies (root)
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       
       - name: Run npm audit
         run: npm audit --audit-level=moderate
@@ -174,13 +174,13 @@ jobs:
           cache: 'pnpm'
       
       - name: Install dependencies (root)
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       
       - name: Build client
-        run: pnpm build:client
+        run: npm run build:client
       
       - name: Build server
-        run: pnpm build:server
+        run: npm run build:server
 
   ci-summary:
     name: CI Summary
